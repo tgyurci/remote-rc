@@ -1,0 +1,7 @@
+# ~root/.login_conf
+
+me:\
+	:path=/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin:\
+	:charset=ISO8859-2:\
+	:lang=hu_HU.ISO8859-2:\
+	:setenv=PAGER=less,EDITOR=vim,LESS=-QMix4,LESSHISTFILE=-,DIFF_OPTIONS=-u:

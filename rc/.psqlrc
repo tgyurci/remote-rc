@@ -1,0 +1,2 @@
+-- ~tgyurci/.psqlrc
+set session client_min_messages = warning;
