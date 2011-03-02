@@ -1,1 +1,2 @@
 bind '^W' ed-delete-prev-word
+history unique 1
