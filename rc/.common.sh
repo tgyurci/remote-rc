@@ -7,7 +7,7 @@ EDITOR=vim
 
 # OS-specific settings
 
-case "${UNAME_S}" in
+case "$UNAME_S" in
 	Darwin)
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'

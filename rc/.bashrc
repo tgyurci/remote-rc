@@ -9,7 +9,11 @@ function src() {
 	[ -f "$1" ] && source "$1"
 }
 
-UNAME_S=$(uname -s)
+if [ -z "$UNAME_S" ]; then
+	UNAME_S=$(uname -s)
+	export UNAME_S
+fi
+
 src "$HOME/.common.sh"
 
 HISTCONTROL=ignoreboth
@@ -18,10 +22,17 @@ HISTFILESIZE=0
 HISTSIZE=1024
 PS1='\u@\h:\w\$ '
 
-HOST_S="${HOSTNAME%%.*}"
-TTY=$(tty)
-TTY_S=${TTY#/dev/}
-TTY_S=${TTY_S##tty}
+if [ -z "$HOST_S" ]; then
+	HOST_S="${HOSTNAME%%.*}"
+	export HOST_S
+fi
+
+if [ -z "$TTY_S" ]; then
+	TTY=$(tty)
+	TTY_S=${TTY#/dev/}
+	TTY_S=${TTY_S##tty}
+	export TTY_S
+fi
 
 shopt -s checkwinsize
 
