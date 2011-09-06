@@ -12,7 +12,7 @@ case "$UNAME_S" in
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'
 		alias ldd='otool -L'
-		PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin
+		PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin
 		EDITOR=/usr/bin/vim
 	;;
 	DragonFly)
@@ -39,13 +39,16 @@ case "$UNAME_S" in
 	;;
 esac
 
-# environment variables
+# aliases
 
-if [ -d "$HOME/bin" ]; then
-	PATH=$HOME/bin:$PATH
+alias df='df -h'
+alias du='du -h'
+if [ -z "$DIFF_OPTIONS" ]; then
+	alias diff='diff -u'
 fi
 
-export PATH
+# environment variables
+
 export BLOCKSIZE=K
 export PAGER=less
 export EDITOR
@@ -57,10 +60,8 @@ if [ -f "$HOME/.inputrc" ]; then
 	export INPUTRC="$HOME/.inputrc"
 fi
 
-# aliases
-
-alias df='df -h'
-alias du='du -h'
-if [ -z "$DIFF_OPTIONS" ]; then
-	alias diff='diff -u'
+if [ -d "$HOME/bin" ]; then
+	PATH=$HOME/bin:$PATH
 fi
+
+export PATH
