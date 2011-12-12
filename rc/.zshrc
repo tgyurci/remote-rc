@@ -30,17 +30,21 @@ src "$HOME/.common.sh"
 LISTMAX=0
 HISTSIZE=128
 unset HISTFILE
-READNULLCMD=$PAGER
+READNULLCMD="$PAGER"
 fignore=(.o .class)
 
 # prompt
-prompt='%n@%m:%~$ '
+if [[ "$UID" = "0" ]]; then
+	prompt='%B%n%b@%B%m%b:%~# '
+else
+	prompt='%n@%m:%~$ '
+fi
 
 # vi rulez forever
 bindkey -v
 
 # if we are in a terminal change the title
-case $TERM in
+case "$TERM" in
 	xterm*|rxvt|Eterm|eterm)
 		function precmd() {
 			print -Pn "\033]0;%n@%m\007"

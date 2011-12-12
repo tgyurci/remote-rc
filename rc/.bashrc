@@ -36,7 +36,7 @@ fi
 
 shopt -s checkwinsize
 
-case $TERM in
+case "$TERM" in
 	xterm*|rxvt|Eterm|eterm)
 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOST_S}\007"'
 	;;
