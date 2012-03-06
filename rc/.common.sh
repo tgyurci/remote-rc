@@ -1,7 +1,23 @@
 # ~tgyurci/.common.sh
 
 if [ -z "$PATH" ]; then
-	PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+	if [ -d /usr/local ]; then
+		PATH=$PATH:/usr/local/sbin:/usr/local/bin
+	fi
+
+	if [ -d /usr/pkg ]; then
+		PATH=$PATH:/usr/pkg/sbin:/usr/pkg/bin
+	fi
+
+	if [ -d /opt/local ]; then
+		PATH=$PATH:/opt/local/sbin:/opt/local/bin
+	fi
+
+	if [ -d "$HOME/bin" ]; then
+		PATH=$HOME/bin:$PATH
+	fi
 fi
 EDITOR=vim
 
@@ -12,7 +28,6 @@ case "$UNAME_S" in
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'
 		alias ldd='otool -L'
-		PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin
 		EDITOR=/usr/bin/vim
 	;;
 	DragonFly)
@@ -53,15 +68,11 @@ export BLOCKSIZE=K
 export PAGER=less
 export EDITOR
 export VISUAL="$EDITOR"
-export LESS="-QMi -x4"
+export LESS="-QMiR -x4"
 export LESSHISTFILE=-
 export XMLLINT_INDENT="	" # tab
 if [ -f "$HOME/.inputrc" ]; then
 	export INPUTRC="$HOME/.inputrc"
-fi
-
-if [ -d "$HOME/bin" ]; then
-	PATH=$HOME/bin:$PATH
 fi
 
 export PATH
