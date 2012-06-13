@@ -4,19 +4,19 @@ if [ -z "$PATH" ]; then
 	PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 	if [ -d /usr/local ]; then
-		PATH=$PATH:/usr/local/sbin:/usr/local/bin
+		PATH="$PATH:/usr/local/sbin:/usr/local/bin"
 	fi
 
 	if [ -d /usr/pkg ]; then
-		PATH=$PATH:/usr/pkg/sbin:/usr/pkg/bin
+		PATH="$PATH:/usr/pkg/sbin:/usr/pkg/bin"
 	fi
 
 	if [ -d /opt/local ]; then
-		PATH=$PATH:/opt/local/sbin:/opt/local/bin
+		PATH="$PATH:/opt/local/sbin:/opt/local/bin"
 	fi
 
 	if [ -d "$HOME/bin" ]; then
-		PATH=$HOME/bin:$PATH
+		PATH="$HOME/bin:$PATH"
 	fi
 fi
 EDITOR=vim

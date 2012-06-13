@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec rsync -amv --exclude .ssh --exclude .local.sh rc/ $1
+exec rsync -rmv --exclude .ssh --exclude .local.sh rc/ $1
