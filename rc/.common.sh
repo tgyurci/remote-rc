@@ -64,8 +64,8 @@ fi
 
 # environment variables
 
-export BLOCKSIZE=K
-export PAGER=less
+export BLOCKSIZE="K"
+export PAGER="less"
 export EDITOR
 export VISUAL="$EDITOR"
 export LESS="-QMiR -x4"
