@@ -6,7 +6,7 @@ umask 22
 
 if ($?prompt) then
 	alias ls ls -FaGo
-	alias df df -h
+	alias df df -hi
 	alias du du -h
 	alias top top -s 1 -o cpu
 
