@@ -49,6 +49,10 @@ case "$UNAME_S" in
 		alias ls='ls -Fao'
 		alias top='top -s 1 -o cpu'
 	;;
+	SunOS)
+		alias ls='ls -Fa --color=auto'
+		alias top='top -s 1 -o cpu'
+	;;
 	*)
 		alias ls='ls -Fa'
 	;;

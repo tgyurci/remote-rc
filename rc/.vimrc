@@ -26,26 +26,23 @@ set noautoindent
 syntax on
 colorscheme default
 
-" included apache configs
-autocmd BufNewFile,BufRead /*/etc/apache*/**/*.conf setlocal filetype=apache
-
 " BSD rc scripts
 autocmd BufRead /etc/rc.* setlocal filetype=sh
 
 " BSD network functions for rc
 autocmd BufRead /etc/network.subr setlocal filetype=sh
 
-" BSD periodic scripts
-autocmd BufRead /etc/periodic/** setlocal filetype=sh tabstop=8
-
 " BSD periodic conf
 autocmd BufRead /etc/periodic.conf setlocal filetype=sh
+
+" BSD periodic scripts
+autocmd BufRead /etc/periodic/** setlocal filetype=sh tabstop=8
 
 " default C include headers
 autocmd BufRead /user/include/** setlocal tabstop=8
 
-" Java sources in BSD's diablo JDK
-autocmd BufRead /usr/local/diablo-jdk16/src/** setlocal tabstop=8
+" included apache configs
+autocmd BufNewFile,BufRead /*/etc/apache*/**/*.conf setlocal filetype=apache
 
 " mod_python directives
 autocmd FileType apache syntax keyword apacheDeclaration PythonPath PythonHandler PythonInterpreter PythonOption
@@ -58,6 +55,9 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " FreeBSD loader config
 autocmd BufRead *.4th setfiletype forth
+
+" Gradle files
+autocmd BufNewFile,BufRead *.gradle setf groovy
 
 filetype indent on
 filetype plugin indent off
