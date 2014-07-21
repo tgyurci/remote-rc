@@ -45,6 +45,10 @@ case "$UNAME_S" in
 		alias ls='ls -Fa --color=auto'
 		alias top='top -d 1'
 	;;
+	NetBSD)
+		alias ls='ls -Fao'
+		alias top='top -s 1 -o cpu'
+	;;
 	OpenBSD)
 		alias ls='ls -Fao'
 		alias top='top -s 1 -o cpu'
