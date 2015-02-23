@@ -18,3 +18,5 @@ set showbreak=>
 set ignorecase
 set smartcase
 syntax on
+
+let g:netrw_dirhistmax=0

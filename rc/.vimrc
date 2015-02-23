@@ -62,6 +62,8 @@ autocmd BufNewFile,BufRead *.gradle setf groovy
 filetype indent on
 filetype plugin indent off
 
+let g:netrw_dirhistmax=0
+
 let s:local_vimrc = $HOME."/.vimrc.local"
 if filereadable(s:local_vimrc)
 	source $HOME/.vimrc.local
