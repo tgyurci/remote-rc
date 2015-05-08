@@ -50,7 +50,11 @@ case "$UNAME_S" in
 		alias top='top -s 1 -o cpu'
 	;;
 	OpenBSD)
-		alias ls='ls -Fao'
+		if [ -x /usr/local/bin/colorls ]; then
+			alias ls='colorls -FaGo'
+		else
+			alias ls='ls -Fao'
+		fi
 		alias top='top -s 1 -o cpu'
 	;;
 	SunOS)

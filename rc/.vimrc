@@ -20,6 +20,7 @@ set noincsearch
 set nohlsearch
 set grepprg=ack\ -a
 set background&
+set pastetoggle=<F6>
 set nomodeline
 set noshowmatch
 set noautoindent

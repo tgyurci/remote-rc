@@ -1,2 +1,7 @@
 -- ~tgyurci/.psqlrc
+\set AUTOCOMMIT off
+\set HISTCONTROL ignoredups
+\set ON_ERROR_ROLLBACK interactive
+\set PROMPT1 '%n@%M:%>/%~%x%R%# '
+\set PROMPT2 :PROMPT1
 set session client_min_messages = warning;
