@@ -18,38 +18,45 @@ if [ -z "$PATH" ]; then
 	if [ -d "$HOME/bin" ]; then
 		PATH="$HOME/bin:$PATH"
 	fi
+
+	export PATH
 fi
-EDITOR=vim
+EDITOR="vim"
 
 # OS-specific settings
 
 case "$UNAME_S" in
 	Darwin)
+		alias df='df -hi'
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'
 		alias ldd='otool -L'
 		EDITOR=/usr/bin/vim
 	;;
 	DragonFly)
+		alias df='df -hi'
 		alias ls='ls -FaGo'
 		alias top='top -s 1 -o cpu'
 		alias fetch='fetch -vr'
 	;;
 	FreeBSD)
+		alias df='df -hi'
 		alias ls='ls -FaGo'
 		alias top='top -s 1 -o cpu'
 		alias fetch='fetch -vr'
-		export DIFF_OPTIONS=-u
 	;;
 	Linux)
+		alias df='df -h'
 		alias ls='ls -Fa --color=auto'
 		alias top='top -d 1'
 	;;
 	NetBSD)
+		alias df='df -hi'
 		alias ls='ls -Fao'
 		alias top='top -s 1 -o cpu'
 	;;
 	OpenBSD)
+		alias df='df -hi'
 		if [ -x /usr/local/bin/colorls ]; then
 			alias ls='colorls -FaGo'
 		else
@@ -62,17 +69,15 @@ case "$UNAME_S" in
 		alias top='top -s 1 -o cpu'
 	;;
 	*)
+		alias df='df -h'
 		alias ls='ls -Fa'
 	;;
 esac
 
 # aliases
 
-alias df='df -h'
 alias du='du -h'
-if [ -z "$DIFF_OPTIONS" ]; then
-	alias diff='diff -u'
-fi
+alias diff='diff -u'
 
 # environment variables
 
@@ -86,5 +91,3 @@ export XMLLINT_INDENT="	" # tab
 if [ -f "$HOME/.inputrc" ]; then
 	export INPUTRC="$HOME/.inputrc"
 fi
-
-export PATH

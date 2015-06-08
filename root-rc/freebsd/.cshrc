@@ -9,6 +9,7 @@ if ($?prompt) then
 	alias df df -hi
 	alias du du -h
 	alias top top -s 1 -o cpu
+	alias diff diff -u
 
 	#setenv EDITOR vim
 	#setenv PAGER less

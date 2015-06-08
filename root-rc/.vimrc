@@ -17,6 +17,12 @@ set shortmess+=I
 set showbreak=>
 set ignorecase
 set smartcase
+set noincsearch
+set nohlsearch
+set background&
+set pastetoggle=<F6>
+set noshowmatch
+set noautoindent
 syntax on
 
 let g:netrw_dirhistmax=0

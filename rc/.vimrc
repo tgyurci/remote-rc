@@ -1,6 +1,7 @@
 " ~tgyurci/.vimrc
 
 set nocompatible
+set nomodeline
 set viminfo=
 set visualbell
 set t_vb=
@@ -21,7 +22,6 @@ set nohlsearch
 set grepprg=ack\ -a
 set background&
 set pastetoggle=<F6>
-set nomodeline
 set noshowmatch
 set noautoindent
 syntax on

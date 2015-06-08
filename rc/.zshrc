@@ -50,7 +50,7 @@ case "$TERM" in
 			print -Pn "\033]0;%n@%m\007"
 		}
 	;;
-	screen)
+	screen*)
 		function precmd() {
 			print -Pn "\033_%n@%m\033\\"
 			print -Pn "\033k%m(%l)\033\\"
