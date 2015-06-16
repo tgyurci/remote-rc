@@ -13,7 +13,7 @@ setopt AUTO_CD NO_BEEP NO_FLOW_CONTROL INTERACTIVE_COMMENTS \
 	PUSHD_IGNORE_DUPS PUSHD_TO_HOME PUSHD_MINUS \
 	BSD_ECHO NO_BG_NICE C_BASES OCTAL_ZEROES AUTO_CONTINUE
 
-function src() {
+src() {
 	[[ -f "$1" ]] && source "$1"
 }
 
@@ -46,12 +46,12 @@ bindkey -v
 # if we are in a terminal change the title
 case "$TERM" in
 	xterm*|rxvt|Eterm|eterm)
-		function precmd() {
+		precmd() {
 			print -Pn "\033]0;%n@%m\007"
 		}
 	;;
 	screen*)
-		function precmd() {
+		precmd() {
 			print -Pn "\033_%n@%m\033\\"
 			print -Pn "\033k%m(%l)\033\\"
 		}
@@ -60,5 +60,6 @@ esac
 
 # local configuration
 src "$HOME/.local.sh"
+src "$HOME/.local.zsh"
 
 unset -f src

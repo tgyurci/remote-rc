@@ -5,7 +5,7 @@ umask 022
 #[[ $- != *i* ]] && return
 [ -z "$PS1" ] && return
 
-function src() {
+src() {
 	[ -f "$1" ] && source "$1"
 }
 
@@ -14,6 +14,7 @@ if [ -z "$UNAME_S" ]; then
 	export UNAME_S
 fi
 
+# common configuration
 src "$HOME/.common.sh"
 
 HISTCONTROL=ignoreboth
@@ -45,7 +46,9 @@ case "$TERM" in
 	;;
 esac
 
+# local configuration
 src "$HOME/.local.sh"
+src "$HOME/.local.bash"
 
 unset command_not_found_handle
 unset src
