@@ -13,6 +13,7 @@ set ruler
 set showmode
 set showcmd
 set wildmenu
+set wildmode=longest:full,full
 set shortmess+=I
 set showbreak=>
 set ignorecase
@@ -22,7 +23,6 @@ set nohlsearch
 set grepprg=ack\ -a
 set background&
 set pastetoggle=<F6>
-set noshowmatch
 set noautoindent
 syntax on
 colorscheme default
