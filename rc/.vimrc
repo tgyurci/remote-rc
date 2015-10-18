@@ -55,10 +55,10 @@ autocmd FileType apache syntax keyword apacheDeclaration SVNPath SVNParentPath
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " FreeBSD loader config
-autocmd BufRead *.4th setfiletype forth
+autocmd BufRead *.4th setlocal filetype=forth
 
 " Gradle files
-autocmd BufNewFile,BufRead *.gradle setf groovy
+autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
 
 filetype indent on
 filetype plugin indent off
