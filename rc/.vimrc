@@ -24,6 +24,13 @@ set grepprg=ack\ -a
 set background&
 set pastetoggle=<F6>
 set noautoindent
+set title
+
+if &term == "screen"
+	set t_ts=_
+	set t_fs=\
+endif
+
 syntax on
 colorscheme default
 
