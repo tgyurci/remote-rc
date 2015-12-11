@@ -8,7 +8,7 @@
 # Options
 
 ## Changing Directories
-setopt AUTO_CD PUSHD_IGNORE_DUPS PUSHD_TO_HOME PUSHD_MINUS
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_TO_HOME PUSHD_MINUS
 
 ## Completion
 setopt ALWAYS_TO_END
@@ -49,6 +49,7 @@ src "$HOME/.common.sh"
 
 # Parameters
 
+DIRSTACKSIZE=20
 fignore=(.class .o .swp)
 HISTSIZE=128
 unset HISTFILE
@@ -64,11 +65,11 @@ fi
 
 ## Right prompt
 case "$TERM" in
-	screen*)
-		RPROMPT="%3v%2v%1v%B?%?%b L%L"
+	(screen|screen-*)
+		RPROMPT='%3v %B%2v%b %1v %B?%?%b L%L'
 	;;
-	*)
-		RPROMPT="%3v%2v%1v%B?%?%b L%L T%l"
+	(*)
+		RPROMPT='%3v %B%2v%b %1v %B?%?%b L%L %l'
 	;;
 esac
 
@@ -76,15 +77,14 @@ esac
 
 ## Terminal title
 case "$TERM" in
-	xterm*)
+	(xterm|xterm-*)
 		precmd() {
-			print -Pn "\033]0;%n@%m\007"
+			print -Pn '\e]0;%n@%m\a'
 		}
 	;;
-	screen*)
+	(screen|screen-*)
 		precmd() {
-			print -Pn "\033_%n@%m\033\\"
-			print -Pn "\033k%m(%l)\033\\"
+			print -Pn '\e_%n@%m\e\\' '\ek%m(%l)\e\\'
 		}
 	;;
 esac
@@ -92,12 +92,36 @@ esac
 ## Extra prompt info functions
 
 set-vi-mode-prompt() {
-	psvar[2]="${${KEYMAP/vicmd/N}/(main|viins)/I} "
+	local mode
+
+	case "$KEYMAP" in
+		(viins|main)
+			case "$ZLE_STATE" in
+				(*insert*) mode="I" ;;
+				(*overwrite*) mode="R" ;;
+				(*) mode="I?" ;;
+			esac
+		;;
+		(vicmd) mode="N" ;;
+		(*) mode="?" ;;
+	esac
+
+	psvar[2]="$mode"
 }
 
 set-histno-prompt() {
-	psvar[1]="!$HISTNO "
+	local hist
+
+	if [[ "$HISTNO" == "$HISTCMD" ]]; then
+		hist="!$HISTNO"
+	else
+		hist="!${HISTCMD}/${HISTNO}"
+	fi
+
+	psvar[1]="$hist"
 }
+
+## Zle widgets
 
 zle-history-line-set() {
 	set-histno-prompt
@@ -117,25 +141,31 @@ zle-line-init() {
 
 ## Autoload functions
 
-typeset -a autoload_functions
-autoload_functions=( edit-command-line zargs zmv )
-
-for autoload_function in $autoload_functions; do
-	autoload "$autoload_function"
-done
+autoload edit-command-line
+autoload zargs
+autoload zmv
 
 # Zle widgets
 
-typeset -a zle_widgets
-zle_widgets=( edit-command-line zle-history-line-set zle-keymap-select zle-line-init )
-
-for zle_widget in $zle_widgets; do
-	zle -N "$zle_widget"
-done
+zle -N edit-command-line
+zle -N zle-history-line-set
+zle -N zle-keymap-select
+zle -N zle-line-init
 
 # Keybindings
 
 bindkey -v
+
+bindkey -M vicmd '^Xv' edit-command-line
+bindkey -M viins '^Xv' edit-command-line
+bindkey -M vicmd '^X^V' edit-command-line
+bindkey -M viins '^X^V' edit-command-line
+
+# Aliases
+
+alias d='dirs -v'
+alias po='popd'
+alias pu='pushd'
 
 # Local configuration
 
@@ -144,5 +174,4 @@ src "$HOME/.local.zsh"
 
 # Cleanup
 
-unset autoload_function autoload_functions zle_widget zle_widgets
 unset -f src
