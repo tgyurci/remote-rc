@@ -38,10 +38,10 @@ fi
 shopt -s checkwinsize
 
 case "$TERM" in
-	xterm*|rxvt|Eterm|eterm)
+	(xterm*)
 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOST_S}\007"'
 	;;
-	screen*)
+	(screen*)
 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOST_S}\033\\"; echo -ne "\\033k${HOST_S}($TTY_S)\033\\"'
 	;;
 esac

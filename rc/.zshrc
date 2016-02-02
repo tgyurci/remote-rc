@@ -57,7 +57,7 @@ LISTMAX=0
 READNULLCMD="$PAGER"
 
 ## Prompt: user@host:dir$
-if [[ "$UID" = "0" ]]; then
+if [[ "$UID" == "0" ]]; then
 	PROMPT='%B%n%b@%B%m%b:%~# '
 else
 	PROMPT='%n@%m:%~$ '
@@ -65,7 +65,7 @@ fi
 
 ## Right prompt
 case "$TERM" in
-	(screen|screen-*)
+	(screen*)
 		RPROMPT='%3v %B%2v%b %1v %B?%?%b L%L'
 	;;
 	(*)
@@ -77,12 +77,12 @@ esac
 
 ## Terminal title
 case "$TERM" in
-	(xterm|xterm-*)
+	(xterm*)
 		precmd() {
 			print -Pn '\e]0;%n@%m\a'
 		}
 	;;
-	(screen|screen-*)
+	(screen*)
 		precmd() {
 			print -Pn '\e_%n@%m\e\\' '\ek%m(%l)\e\\'
 		}
