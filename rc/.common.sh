@@ -1,5 +1,7 @@
 # ~tgyurci/.common.sh
 
+# environment variables
+
 if [ -z "$PATH" ]; then
 	PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -16,38 +18,59 @@ if [ -z "$PATH" ]; then
 	fi
 
 	if [ -d "$HOME/bin" ]; then
-		PATH="$HOME/bin:$PATH"
+		PATH="$PATH:$HOME/bin"
 	fi
 
 	export PATH
 fi
-EDITOR="vim"
+
+export BLOCKSIZE="K"
+export EDITOR="vim"
+export LESS="-QMiR -x4"
+export LESSHISTFILE=-
+export PAGER="less"
+export VISUAL="$EDITOR"
+export XMLLINT_INDENT="	" # tab
+if [ -f "$HOME/.inputrc" ]; then
+	export INPUTRC="$HOME/.inputrc"
+fi
+
+# common aliases
+
+alias df='df -h'
+alias diff='diff -u'
+alias du='du -h'
+alias v='$EDITOR -'
+alias ls='ls -Fa'
+alias p='$PAGER'
 
 # OS-specific settings
 
 case "$UNAME_S" in
 	Darwin)
 		alias df='df -hi'
+		alias ldd='otool -L'
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'
-		alias ldd='otool -L'
 		EDITOR=/usr/bin/vim
 	;;
 	DragonFly)
 		alias df='df -hi'
+		alias fetch='fetch -vr'
 		alias ls='ls -FaGo'
 		alias top='top -s 1 -o cpu'
-		alias fetch='fetch -vr'
 	;;
 	FreeBSD)
 		alias df='df -hi'
+		alias fetch='fetch -vr'
 		alias ls='ls -FaGo'
 		alias top='top -s 1 -o cpu'
-		alias fetch='fetch -vr'
 	;;
 	Linux)
 		alias df='df -h'
+		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'
+		alias pstree='pstree -aclpSu'
 		alias top='top -d 1'
 	;;
 	NetBSD)
@@ -69,25 +92,5 @@ case "$UNAME_S" in
 		alias top='top -s 1 -o cpu'
 	;;
 	*)
-		alias df='df -h'
-		alias ls='ls -Fa'
 	;;
 esac
-
-# aliases
-
-alias du='du -h'
-alias diff='diff -u'
-
-# environment variables
-
-export BLOCKSIZE="K"
-export PAGER="less"
-export EDITOR
-export VISUAL="$EDITOR"
-export LESS="-QMiR -x4"
-export LESSHISTFILE=-
-export XMLLINT_INDENT="	" # tab
-if [ -f "$HOME/.inputrc" ]; then
-	export INPUTRC="$HOME/.inputrc"
-fi
