@@ -48,6 +48,7 @@ alias gc='grep --color=auto'
 alias grepc='grep --color=auto'
 alias ls='ls -Fa'
 alias p='$PAGER'
+alias tm='tmux new-session -A -s'
 alias v='$EDITOR -'
 
 # OS-specific settings
