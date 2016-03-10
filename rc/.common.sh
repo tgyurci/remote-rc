@@ -40,9 +40,10 @@ fi
 alias df='df -h'
 alias diff='diff -u'
 alias du='du -h'
-alias v='$EDITOR -'
+alias grep='grep --color=auto'
 alias ls='ls -Fa'
 alias p='$PAGER'
+alias v='$EDITOR -'
 
 # OS-specific settings
 

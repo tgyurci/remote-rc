@@ -66,10 +66,10 @@ fi
 ## Right prompt
 case "$TERM" in
 	(screen*)
-		RPROMPT='%3v %B%2v%b %1v %B?%?%b L%L'
+		RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b L%L'
 	;;
 	(*)
-		RPROMPT='%3v %B%2v%b %1v %B?%?%b L%L %l'
+		RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b L%L %l'
 	;;
 esac
 
@@ -79,12 +79,12 @@ esac
 case "$TERM" in
 	(xterm*)
 		precmd() {
-			print -Pn '\e]0;%n@%m\a'
+			print -Pn '\e]0;%n@%m%(4V. [%4v].)\a'
 		}
 	;;
 	(screen*)
 		precmd() {
-			print -Pn '\e_%n@%m\e\\' '\ek%m(%l)\e\\'
+			print -Pn '\e_%n@%m%(4V. [%4v].)\e\\' '\ek%m(%l)\e\\'
 		}
 	;;
 esac
