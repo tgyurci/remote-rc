@@ -14,7 +14,7 @@ if [ -z "$UNAME_S" ]; then
 fi
 
 # Common configuration
-src "$HOME/.common.sh"
+src "$HOME/.shrc"
 
 HISTCONTROL=ignoreboth
 unset HISTFILE
@@ -44,8 +44,7 @@ case "$TERM" in
 esac
 
 # Local configuration
-src "$HOME/.local.sh"
-src "$HOME/.local.bash"
+src "$HOME/.bashrc.local"
 
 unset command_not_found_handle
 unset src

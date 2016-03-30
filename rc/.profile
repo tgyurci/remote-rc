@@ -1,7 +1,12 @@
 # ~tgyurci/.profile
 
-# TODO execute ~/.local.sh if it exists and shell is interactive
-if [ -f "$HOME/.common.sh" ]; then
+# Set ENV for interactive shells
+if [ -f "$HOME/.shrc" ]; then
 	export UNAME_S="$(uname -s)"
-	export ENV="$HOME/.common.sh"
+	export ENV="$HOME/.shrc"
+fi
+
+# Local configuration
+if [ -f "$HOME/.profile.local" ]; then
+	. "$HOME/.profile.local"
 fi

@@ -37,14 +37,14 @@ src() {
 	[[ -f "$1" ]] && source "$1"
 }
 
-## Set UNAME_S for .common.sh
+## Set UNAME_S for .shrc
 if [[ -z "$UNAME_S" ]]; then
 	# this is the only fork in the Zsh rc files
 	typeset -r UNAME_S=$(uname -s)
 fi
 
 ## Common configuration
-src "$HOME/.common.sh"
+src "$HOME/.shrc"
 
 # Parameters
 
@@ -173,8 +173,7 @@ alias pu='pushd'
 
 # Local configuration
 
-src "$HOME/.local.sh"
-src "$HOME/.local.zsh"
+src "$HOME/.zshrc.local"
 
 # Cleanup
 

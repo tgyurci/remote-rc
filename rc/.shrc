@@ -1,4 +1,4 @@
-# ~tgyurci/.common.sh
+# ~tgyurci/.shrc
 #
 # vi: ft=sh
 
@@ -106,3 +106,9 @@ case "$UNAME_S" in
 	*)
 	;;
 esac
+
+## Local configuration
+
+if [ -f "$HOME/.shrc.local" ]; then
+	. "$HOME/.shrc.local"
+fi
