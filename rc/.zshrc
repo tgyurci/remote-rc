@@ -64,13 +64,17 @@ else
 fi
 
 ## Right prompt
+RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b'
+
+if [[ -o login ]]; then
+	RPROMPT="$RPROMPT %UL%L%u"
+else
+	RPROMPT="$RPROMPT L%L"
+fi
+
 case "$TERM" in
-	(screen*)
-		RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b L%L'
-	;;
-	(*)
-		RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b L%L %l'
-	;;
+	(screen*) ;;
+	(*) RPROMPT="$RPROMPT %l" ;;
 esac
 
 # Functions
