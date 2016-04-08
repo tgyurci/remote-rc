@@ -31,17 +31,20 @@ export LESSHISTFILE=-
 export PAGER="less"
 export VISUAL="$EDITOR"
 export XMLLINT_INDENT="	" # tab
-if [ -f "$HOME/.inputrc" ]; then
-	export INPUTRC="$HOME/.inputrc"
-fi
 
 # common aliases
 
 alias df='df -h'
 alias diff='diff -u'
 alias du='du -h'
+alias eg='egrep'
+alias egc='egrep --color=auto'
 alias egrepc='egrep --color=auto'
+alias fg='fgrep'
+alias fgc='fgrep --color=auto'
 alias fgrepc='fgrep --color=auto'
+alias g='grep'
+alias gc='grep --color=auto'
 alias grepc='grep --color=auto'
 alias ls='ls -Fa'
 alias p='$PAGER'
