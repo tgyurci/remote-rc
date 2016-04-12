@@ -11,7 +11,6 @@ src() {
 
 if [ -z "$UNAME_S" ]; then
 	UNAME_S=$(uname -s)
-	export UNAME_S
 fi
 
 # common configuration
@@ -25,14 +24,12 @@ PS1='\u@\h:\w\$ '
 
 if [ -z "$HOST_S" ]; then
 	HOST_S="${HOSTNAME%%.*}"
-	export HOST_S
 fi
 
 if [ -z "$TTY_S" ]; then
 	TTY=$(tty)
 	TTY_S=${TTY#/dev/}
 	TTY_S=${TTY_S##tty}
-	export TTY_S
 fi
 
 shopt -s checkwinsize

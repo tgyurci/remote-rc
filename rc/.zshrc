@@ -41,7 +41,6 @@ src() {
 if [[ -z "$UNAME_S" ]]; then
 	# this is the only fork in the Zsh rc files
 	typeset -r UNAME_S=$(uname -s)
-	export UNAME_S
 fi
 
 ## Common defaults
