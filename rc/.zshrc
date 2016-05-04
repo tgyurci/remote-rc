@@ -43,7 +43,7 @@ if [[ -z "$UNAME_S" ]]; then
 	typeset -r UNAME_S=$(uname -s)
 fi
 
-## Common defaults
+## Common configuration
 src "$HOME/.common.sh"
 
 # Parameters
@@ -55,7 +55,7 @@ unset HISTFILE
 LISTMAX=0
 READNULLCMD="$PAGER"
 
-## Prompt: user@host:dir$
+## Prompt: user@host:dir$ or root@host:dir# with bold host and user
 if [[ "$UID" == "0" ]]; then
 	PROMPT='%B%n%b@%B%m%b:%~# '
 else
@@ -87,7 +87,8 @@ case "$TERM" in
 	;;
 	(screen*)
 		precmd() {
-			print -Pn '\e_%n@%m%(4V. [%4v].)\e\\' '\ek%m(%l)\e\\'
+			print -Pn '\e_%n@%m%(4V. [%4v].)\e\\'
+			print -Pn '\ek%m(%l)\e\\'
 		}
 	;;
 esac

@@ -1,6 +1,10 @@
 # ~tgyurci/.common.sh
+#
+# vi: ft=sh
 
-# environment variables
+# Common initializer for interactive Bourne-compatible shells
+
+## Environment variables
 
 if [ -z "$PATH" ]; then
 	PATH=/sbin:/bin:/usr/sbin:/usr/bin
@@ -32,7 +36,7 @@ export PAGER="less"
 export VISUAL="$EDITOR"
 export XMLLINT_INDENT="	" # tab
 
-# common aliases
+## Aliases
 
 alias df='df -h'
 alias diff='diff -u'
@@ -51,7 +55,7 @@ alias p='$PAGER'
 alias tm='tmux new-session -A -s'
 alias v='$EDITOR -'
 
-# OS-specific settings
+## OS-specific settings
 
 case "$UNAME_S" in
 	Darwin)

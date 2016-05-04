@@ -13,7 +13,7 @@ if [ -z "$UNAME_S" ]; then
 	UNAME_S=$(uname -s)
 fi
 
-# common configuration
+# Common configuration
 src "$HOME/.common.sh"
 
 HISTCONTROL=ignoreboth
@@ -43,7 +43,7 @@ case "$TERM" in
 	;;
 esac
 
-# local configuration
+# Local configuration
 src "$HOME/.local.sh"
 src "$HOME/.local.bash"
 
