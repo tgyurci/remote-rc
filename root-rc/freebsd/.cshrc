@@ -1,15 +1,18 @@
 # ~root/.cshrc
+#
+# vi: ft=tcsh
 
 umask 22
 
 #set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin)
 
 if ($?prompt) then
-	alias ls ls -FaGo
 	alias df df -hi
-	alias du du -h
-	alias top top -s 1 -o cpu
 	alias diff diff -u
+	alias du du -h
+	alias ls ls -FaGo
+	alias pstree pstree -w
+	alias top top -s 1 -o cpu
 
 	#setenv EDITOR vim
 	#setenv PAGER less
@@ -39,6 +42,7 @@ if ($?prompt) then
 		bindkey -k up history-search-backward
 		bindkey -k down history-search-forward
 	endif
+
 	bindkey -v
 
 	set time = (8 "Time spent in user mode   (CPU seconds) : %Us\
@@ -49,9 +53,9 @@ Times the process was swapped           : %W\
 Times of major page faults              : %F\
 Times of minor page faults              : %R")
 
-	if ($term == xterm || $term == rxvt) then
+	if ($term =~ "xterm*") then
 		alias precmd 'echo -n "\033]0;${HOST}:${PWD}\007"'
-	else if ($term == screen) then
+	else if ($term =~ "screen*") then
 		alias precmd 'echo -n "\033_${HOST}:${PWD}\033\\"'
 	endif
 

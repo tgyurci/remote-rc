@@ -71,13 +71,14 @@ case "$UNAME_S" in
 		alias df='df -hi'
 		alias fetch='fetch -vr'
 		alias ls='ls -FaGo'
+		alias pstree='pstree -w'
 		alias top='top -s 1 -o cpu'
 	;;
 	Linux)
 		alias df='df -h'
 		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'
-		alias pstree='pstree -aclpSu'
+		alias pstree='pstree -aclpu'
 		alias top='top -d 1'
 	;;
 	NetBSD)
