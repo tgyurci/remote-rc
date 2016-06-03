@@ -34,6 +34,11 @@ endif
 syntax on
 colorscheme default
 
+if &t_Co == 256
+	highlight CursorLineNr cterm=bold
+	highlight Statement ctermfg=3
+endif
+
 " BSD rc scripts
 autocmd BufRead /etc/rc.* setlocal filetype=sh
 
