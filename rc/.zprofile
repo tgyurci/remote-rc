@@ -1,4 +1,4 @@
 # ~tgyurci/.zprofile
 
-[[ -f ~/.profile.local ]] && . ~/.profile.local
+[[ -f ~/.profile ]] && . ~/.profile
 [[ -f ~/.zprofile.local ]] && . ~/.zprofile.local
