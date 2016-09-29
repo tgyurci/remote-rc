@@ -88,7 +88,7 @@ case "$TERM" in
 	(screen*)
 		precmd() {
 			print -Pn '\e_%n@%m%(4V. [%4v].)\e\\'
-			print -Pn '\ek%m(%l)\e\\'
+			print -Pn '\ek%m(%l)%(5V./%5v.)\e\\'
 		}
 	;;
 esac
