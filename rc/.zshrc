@@ -95,7 +95,7 @@ esac
 
 ## Extra prompt info functions
 
-set-vi-mode-prompt() {
+_set-vi-mode-prompt() {
 	local mode
 
 	case "$KEYMAP" in
@@ -113,7 +113,7 @@ set-vi-mode-prompt() {
 	psvar[2]="$mode"
 }
 
-set-histno-prompt() {
+_set-histno-prompt() {
 	local hist
 
 	if [[ "$HISTNO" == "$HISTCMD" ]]; then
@@ -128,18 +128,18 @@ set-histno-prompt() {
 ## Zle widgets
 
 zle-history-line-set() {
-	set-histno-prompt
+	_set-histno-prompt
 	zle reset-prompt
 }
 
 zle-keymap-select() {
-	set-vi-mode-prompt
+	_set-vi-mode-prompt
 	zle reset-prompt
 }
 
 zle-line-init() {
-	set-vi-mode-prompt
-	set-histno-prompt
+	_set-vi-mode-prompt
+	_set-histno-prompt
 	zle reset-prompt
 }
 
