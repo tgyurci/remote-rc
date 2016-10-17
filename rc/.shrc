@@ -63,14 +63,14 @@ case "$UNAME_S" in
 		alias df='df -hi'
 		alias fetch='fetch -vr'
 		alias ls='ls -FaGo'
-		alias top='top -s 1 -o cpu'
+		alias top='top -c -S -s 1 -o cpu'
 	;;
 	FreeBSD)
 		alias df='df -hi'
 		alias fetch='fetch -vr'
 		alias ls='ls -FaGo'
 		alias pstree='pstree -w'
-		alias top='top -s 1 -o cpu'
+		alias top='top -Sjaz -s 1 -o cpu'
 	;;
 	Linux)
 		alias df='df -h'
@@ -91,7 +91,7 @@ case "$UNAME_S" in
 		else
 			alias ls='ls -Fao'
 		fi
-		alias top='top -s 1 -o cpu'
+		alias top='top -C -S -s 1 -o cpu'
 	;;
 	SunOS)
 		alias ls='ls -Fa --color=auto'
