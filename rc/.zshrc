@@ -161,6 +161,8 @@ zle -N zle-line-init
 
 bindkey -v
 
+## Edit command line in external editor
+
 bindkey -M vicmd '^Xv' edit-command-line
 bindkey -M viins '^Xv' edit-command-line
 bindkey -M vicmd '^X^V' edit-command-line

@@ -57,7 +57,6 @@ case "$UNAME_S" in
 		alias ldd='otool -L'
 		alias ls='ls -FaGO'
 		alias top='top -s 1 -o cpu'
-		EDITOR=/usr/bin/vim
 	;;
 	DragonFly)
 		alias df='df -hi'
@@ -77,7 +76,7 @@ case "$UNAME_S" in
 		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'
 		alias pstree='pstree -aclpu'
-		alias top='top -d 1'
+		alias top='top -c -d 1'
 	;;
 	NetBSD)
 		alias df='df -hi'
