@@ -161,6 +161,24 @@ zle -N zle-line-init
 
 bindkey -v
 
+## Delete key
+if [[ -n "$terminfo[kdch1]" ]]; then
+	bindkey -M vicmd "$terminfo[kdch1]" vi-delete-char
+	bindkey -M viins "$terminfo[kdch1]" vi-delete-char
+fi
+
+## Home key
+if [[ -n "$terminfo[khome]" ]]; then
+	bindkey -M vicmd "$terminfo[khome]" vi-beginning-of-line
+	bindkey -M viins "$terminfo[khome]" vi-beginning-of-line
+fi
+
+## End key
+if [[ -n "$terminfo[kend]" ]]; then
+	bindkey -M vicmd "$terminfo[kend]" vi-end-of-line
+	bindkey -M viins "$terminfo[kend]" vi-end-of-line
+fi
+
 ## Edit command line in external editor
 
 bindkey -M vicmd '^Xv' edit-command-line
