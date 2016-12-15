@@ -146,13 +146,15 @@ zle-line-init() {
 
 ## Autoload functions
 
-autoload edit-command-line
-autoload zargs
-autoload zmv
+autoload -Uz edit-command-line
+autoload -Uz insert-composed-char
+autoload -Uz zargs
+autoload -Uz zmv
 
 # Zle widgets
 
 zle -N edit-command-line
+zle -N insert-composed-char
 zle -N zle-history-line-set
 zle -N zle-keymap-select
 zle -N zle-line-init
@@ -160,6 +162,11 @@ zle -N zle-line-init
 # Keybindings
 
 bindkey -v
+
+## Insert key
+if [[ -n "$terminfo[kich1]" ]]; then
+	bindkey -M vicmd "$terminfo[kich1]" vi-insert
+fi
 
 ## Delete key
 if [[ -n "$terminfo[kdch1]" ]]; then
@@ -185,6 +192,10 @@ bindkey -M vicmd '^Xv' edit-command-line
 bindkey -M viins '^Xv' edit-command-line
 bindkey -M vicmd '^X^V' edit-command-line
 bindkey -M viins '^X^V' edit-command-line
+
+## Insert composed charcters
+
+bindkey -M viins '^K' insert-composed-char
 
 # Aliases
 
