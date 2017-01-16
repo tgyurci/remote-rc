@@ -8,5 +8,10 @@ else
 fi
 
 for host in "$@"; do
-	rsync -rtmv $dry_run --exclude '*.swp' --exclude .ssh --exclude .local.sh --exclude '.*.local' rc/ "$host"
+	rsync -crpmv $dry_run \
+		--exclude="*.swp" \
+		--exclude=".ssh" \
+		--exclude=".local.sh" \
+		--exclude=".*.local" \
+		rc/ "$host"
 done
