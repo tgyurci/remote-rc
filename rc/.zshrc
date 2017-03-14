@@ -13,6 +13,9 @@ setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_TO_HOME PUSHD_MINUS
 ## Completion
 setopt ALWAYS_TO_END
 
+## Expansion and globbing
+setopt WARN_CREATE_GLOBAL
+
 ## History
 setopt HIST_FIND_NO_DUPS HIST_IGNORE_DUPS HIST_NO_STORE HIST_REDUCE_BLANKS
 
@@ -48,7 +51,7 @@ src "$HOME/.shrc"
 
 # Parameters
 
-DIRSTACKSIZE=20
+DIRSTACKSIZE=30
 fignore=(.class .o .swp)
 HISTSIZE=128
 unset HISTFILE
@@ -56,20 +59,16 @@ KEYTIMEOUT=5
 LISTMAX=0
 READNULLCMD="$PAGER"
 
-## Prompt: user@host:dir$ or root@host:dir# with bold host and user
-if [[ "$UID" == "0" ]]; then
-	PROMPT='%B%n%b@%B%m%b:%~# '
-else
-	PROMPT='%n@%m:%~$ '
-fi
+## Prompt: user@host:dir% or root@host:dir# with bold host and user
+PROMPT='%(!.%B%n%b.%n)@%(!.%B%m%b.%m):%~%# '
 
 ## Right prompt
-RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%B?%?%b'
+RPROMPT='%(3V.%3v .)%(2V.%B%2v%b .)%(1V.%1v .)%(1j.&%j .)%(0?..%B?%?%b )'
 
 if [[ -o login ]]; then
-	RPROMPT="$RPROMPT %UL%L%u"
+	RPROMPT="${RPROMPT}%UL%L%u"
 else
-	RPROMPT="$RPROMPT L%L"
+	RPROMPT="${RPROMPT}L%L"
 fi
 
 case "$TERM" in
@@ -108,6 +107,7 @@ _set-vi-mode-prompt() {
 			esac
 		;;
 		(vicmd) mode="N" ;;
+		(viopp) mode="O" ;;
 		(*) mode="?" ;;
 	esac
 
