@@ -186,6 +186,13 @@ if [[ -n "$terminfo[kend]" ]]; then
 	bindkey -M viins "$terminfo[kend]" vi-end-of-line
 fi
 
+## Searching in history
+
+bindkey -M viins '^B' history-beginning-search-backward
+bindkey -M viins '^P' history-incremental-pattern-search-backward
+bindkey -M viins '^N' history-incremental-pattern-search-forward
+bindkey -M isearch '^M' accept-search
+
 ## Edit command line in external editor
 
 bindkey -M vicmd '^Xv' edit-command-line
@@ -193,7 +200,7 @@ bindkey -M viins '^Xv' edit-command-line
 bindkey -M vicmd '^X^V' edit-command-line
 bindkey -M viins '^X^V' edit-command-line
 
-## Insert composed charcters
+## Insert composed characters
 
 bindkey -M viins '^K' insert-composed-char
 
