@@ -120,7 +120,7 @@ _set-histno-prompt() {
 	if [[ "$HISTNO" == "$HISTCMD" ]]; then
 		hist="!$HISTNO"
 	else
-		hist="!${HISTCMD}/${HISTNO}"
+		hist="!${HISTNO}/${HISTCMD}"
 	fi
 
 	psvar[1]="$hist"
