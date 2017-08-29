@@ -59,7 +59,7 @@ KEYTIMEOUT=5
 LISTMAX=0
 READNULLCMD="$PAGER"
 
-## Prompt: user@host:dir% or root@host:dir# with bold host and user
+## Prompt
 PROMPT='%(!.%B%n%b.%n)@%(!.%B%m%b.%m):%~%# '
 
 ## Right prompt
@@ -186,11 +186,18 @@ if [[ -n "$terminfo[kend]" ]]; then
 	bindkey -M viins "$terminfo[kend]" vi-end-of-line
 fi
 
+## Navigating in insert mode
+
+bindkey -M viins '^A' vi-beginning-of-line
+bindkey -M viins '^E' vi-end-of-line
+bindkey -M viins '^F' vi-forward-char
+bindkey -M viins '^B' vi-backward-char
+
 ## Searching in history
 
-bindkey -M viins '^B' history-beginning-search-backward
-bindkey -M viins '^P' history-incremental-pattern-search-backward
-bindkey -M viins '^N' history-incremental-pattern-search-forward
+bindkey -M viins '^X^B' history-beginning-search-backward
+bindkey -M viins '^X^P' history-incremental-pattern-search-backward
+bindkey -M viins '^X^N' history-incremental-pattern-search-forward
 bindkey -M isearch '^M' accept-search
 
 ## Edit command line in external editor
