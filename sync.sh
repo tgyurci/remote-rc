@@ -21,6 +21,7 @@ shift $(($OPTIND - 1))
 [ $# -gt 0 ] || fail "Usage: $0 [-n] [--] target ..."
 
 for target; do
+	#(cd rc && find . -type f -print0) | rsync -crpmv -0 --files-from=- ${n_opt:+"-n"} \
 	rsync -crpmv ${n_opt:+"-n"} \
 		--exclude="*.swp" \
 		--exclude=".ssh" \
