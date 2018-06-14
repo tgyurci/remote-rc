@@ -38,6 +38,7 @@ export XMLLINT_INDENT="	" # tab
 
 ## Aliases
 
+alias bc='bc -l'
 alias df='df -h'
 alias diff='diff -u'
 alias du='du -h'
@@ -53,6 +54,7 @@ alias v='$EDITOR -'
 
 case "$UNAME_S" in
 	Darwin)
+		alias bc='bc -lq'
 		alias df='df -hi'
 		alias ldd='otool -L'
 		alias ls='ls -FaGO'
@@ -72,7 +74,7 @@ case "$UNAME_S" in
 		alias top='top -Sjaz -s 1 -o cpu'
 	;;
 	Linux)
-		alias df='df -h'
+		alias bc='bc -lq'
 		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'
 		alias pstree='pstree -aclpu'
