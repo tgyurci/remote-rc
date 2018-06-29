@@ -75,6 +75,9 @@ autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
 " Local .gitconfig
 autocmd BufNewFile,BufRead ~/.gitconfig.local setlocal filetype=gitconfig
 
+" Local .tmux.conf
+autocmd BufNewFile,BufRead ~/.tmux.conf.local setlocal filetype=tmux
+
 " Start insert mode in Command-line window
 autocmd CmdwinEnter * startinsert
 
