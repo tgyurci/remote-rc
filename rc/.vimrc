@@ -72,6 +72,9 @@ autocmd BufRead *.4th setlocal filetype=forth
 " Gradle files
 autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
 
+" Local .gitconfig
+autocmd BufNewFile,BufRead ~/.gitconfig.local setlocal filetype=gitconfig
+
 " Start insert mode in Command-line window
 autocmd CmdwinEnter * startinsert
 
