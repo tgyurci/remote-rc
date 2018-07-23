@@ -26,7 +26,7 @@ set pastetoggle=<F6>
 set noautoindent
 set title
 
-if &term == "screen"
+if &term == "screen" || &term =~ "^screen-"
 	set t_ts=_
 	set t_fs=\
 endif
