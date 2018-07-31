@@ -58,6 +58,7 @@ case "$UNAME_S" in
 		alias df='df -hi'
 		alias ldd='otool -L'
 		alias ls='ls -FaGOW'
+		alias pstree='pstree -w'
 		alias top='top -s 1 -o cpu'
 	;;
 	DragonFly)
