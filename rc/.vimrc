@@ -66,6 +66,9 @@ autocmd FileType apache syntax keyword apacheDeclaration SVNPath SVNParentPath
 " default indenter for xml files
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
+" default indenter for JSON files
+autocmd FileType json setlocal equalprg=jq\ -M\ .
+
 " FreeBSD loader config
 autocmd BufRead *.4th setlocal filetype=forth
 
