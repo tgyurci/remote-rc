@@ -19,7 +19,7 @@ src "$HOME/.shrc"
 HISTCONTROL=ignoreboth
 unset HISTFILE
 HISTFILESIZE=0
-HISTSIZE=1024
+HISTSIZE=2048
 PS1='\u@\h:\w\$ '
 
 if [ -z "$HOST_S" ]; then

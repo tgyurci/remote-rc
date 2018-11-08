@@ -53,7 +53,7 @@ src "$HOME/.shrc"
 
 DIRSTACKSIZE=30
 fignore=(.class .o .swp)
-HISTSIZE=128
+HISTSIZE=2048
 unset HISTFILE
 KEYTIMEOUT=5
 LISTMAX=0
