@@ -71,7 +71,8 @@ set wildmenu
 " 21 executing external commands
 
 " 22 running make and jumping to errors
-set grepprg=ack\ -a
+set grepprg=ag\ --vimgrep\ $*
+set grepformat^=%f:%l:%c:%m
 
 " 23 language specific
 set keymap=magyar
