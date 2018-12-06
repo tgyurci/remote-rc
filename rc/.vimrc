@@ -16,7 +16,11 @@ set smartcase
 "  4 displaying text
 set nowrap
 set showbreak=>
-set listchars=eol:¶,tab:»\ ,space:·,extends:>,precedes:<,nbsp:¬
+if has('patch-7.4.710')
+	set listchars=eol:¶,tab:»\ ,space:·,extends:>,precedes:<,nbsp:¬
+else
+	set listchars=eol:¶,tab:»\ ,extends:>,precedes:<,nbsp:¬
+endif
 
 "  5 syntax, highlighting and spelling
 set background&
