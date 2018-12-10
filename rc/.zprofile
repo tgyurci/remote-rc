@@ -1,4 +1,9 @@
 # ~tgyurci/.zprofile
 
-[[ -f ~/.profile ]] && . ~/.profile
-[[ -f ~/.zprofile.local ]] && . ~/.zprofile.local
+if [[ -f ~/.profile ]]; then
+	emulate sh -c '. ~/.profile'
+fi
+
+if [[ -f ~/.zprofile.local ]]; then
+	. ~/.zprofile.local
+fi
