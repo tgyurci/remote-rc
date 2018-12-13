@@ -64,6 +64,9 @@ set shiftwidth=4
 
 " 18 reading and writing files
 set nomodeline
+"set backupskip+=$HOME/.tmp/*
+"set backupskip+=~/.tmp/*
+let &backupskip = &backupskip . ',' . expand('$HOME') . '/.tmp/*'
 
 " 19 the swap file
 set updatetime=2000
@@ -101,10 +104,14 @@ endif
 
 let g:netrw_dirhistmax=0
 
+" Filetype detection
+
+filetype on
+"filetype plugin indent on
+
 " Syntax highlighting
 
 syntax enable
-"colorscheme default
 
 if &t_Co == 256
 	highlight CursorLineNr cterm=bold
@@ -118,57 +125,79 @@ highlight Special ctermfg=92
 highlight SpecialKey ctermfg=Gray
 highlight Title cterm=bold
 
-" Filetype detection
-
-filetype indent on
-filetype plugin indent off
+"colorscheme default
 
 " Autocommands
 
-" BSD rc scripts
-autocmd BufRead /etc/rc.* setlocal filetype=sh
+augroup vimrc_filetypedetect
+	autocmd!
 
-" BSD network functions for rc
-autocmd BufRead /etc/network.subr setlocal filetype=sh
+	" BSD rc scripts
+	autocmd BufRead /etc/{rc.*,*.subr} setfiletype sh
 
-" BSD periodic conf
-autocmd BufRead /etc/periodic.conf setlocal filetype=sh
+	" BSD periodic conf
+	autocmd BufRead /etc/periodic.conf setfiletype sh
 
-" BSD periodic scripts
-autocmd BufRead /etc/periodic/** setlocal filetype=sh tabstop=8
+	" BSD periodic scripts
+	autocmd BufRead /etc/periodic/** setfiletype sh
 
-" default C include headers
-autocmd BufRead /user/include/** setlocal tabstop=8
+	" FreeBSD loader config
+	autocmd BufRead *.4th setfiletype forth
 
-" included apache configs
-autocmd BufNewFile,BufRead /*/etc/apache*/**/*.conf setlocal filetype=apache
+	" Included apache configs
+	autocmd BufNewFile,BufRead /*/etc/apache*/**/*.conf setfiletype apache
 
-" mod_python directives
-autocmd FileType apache syntax keyword apacheDeclaration PythonPath PythonHandler PythonInterpreter PythonOption
+	" Gradle files
+	autocmd BufNewFile,BufRead *.gradle setfiletype groovy
 
-" mod_dav_svn directives
-autocmd FileType apache syntax keyword apacheDeclaration SVNPath SVNParentPath
+	" Local .gitconfig
+	autocmd BufNewFile,BufRead ~/.gitconfig.local setfiletype gitconfig
 
-" default indenter for xml files
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
+	" Local .tmux.conf
+	autocmd BufNewFile,BufRead ~/.tmux.conf.local setfiletype tmux
+augroup END
 
-" default indenter for JSON files
-autocmd FileType json setlocal equalprg=jq\ -M\ .
+augroup vimrc_filetypeplugin
+	autocmd!
 
-" FreeBSD loader config
-autocmd BufRead *.4th setlocal filetype=forth
+	" BSD periodic scripts
+	autocmd BufRead /etc/periodic/** setlocal tabstop=8
 
-" Gradle files
-autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
+	" Default C include headers
+	autocmd BufRead /user/include/** setlocal tabstop=8
 
-" Local .gitconfig
-autocmd BufNewFile,BufRead ~/.gitconfig.local setlocal filetype=gitconfig
+	" Apache mod_python directives
+	autocmd FileType apache syntax keyword apacheDeclaration PythonPath PythonHandler PythonInterpreter PythonOption
 
-" Local .tmux.conf
-autocmd BufNewFile,BufRead ~/.tmux.conf.local setlocal filetype=tmux
+	" Apache mod_dav_svn directives
+	autocmd FileType apache syntax keyword apacheDeclaration SVNPath SVNParentPath
 
-" Start insert mode in Command-line window
-autocmd CmdwinEnter * startinsert
+	" Default indenter for xml files
+	autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
+
+	" Default indenter for JSON files
+	autocmd FileType json setlocal equalprg=jq\ -M\ .
+augroup END
+
+augroup vimrc_securefile
+	autocmd!
+
+	autocmd BufNewFile,BufReadPre /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,$HOME/.tmp/*
+		\ setlocal noswapfile | setlocal noundofile
+augroup END
+
+augroup vimrc_logfile
+	autocmd!
+
+	autocmd BufRead /var/log/* setlocal buftype=nowrite
+augroup END
+
+augroup vimrc_cmdwin
+	autocmd!
+
+	" Start insert mode in Command-line window
+	autocmd CmdwinEnter * startinsert
+augroup END
 
 let s:local_vimrc = $HOME."/.vimrc.local"
 if filereadable(s:local_vimrc)
