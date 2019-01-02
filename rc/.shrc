@@ -75,6 +75,7 @@ case "$UNAME_S" in
 		alias top='top -Sjaz -s 1 -o cpu'
 	;;
 	Linux)
+		export SYSTEMD_PAGER=""
 		alias bc='bc -lq'
 		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'
