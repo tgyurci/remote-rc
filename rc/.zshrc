@@ -44,7 +44,7 @@ src() {
 
 ## Set UNAME_S for .shrc
 if [[ -z "$UNAME_S" ]]; then
-	# this is the only fork in the Zsh rc files
+	# this is the only fork() in the Zsh rc files
 	typeset -r UNAME_S=$(uname -s)
 fi
 
