@@ -83,17 +83,19 @@ esac
 ## Terminal title
 case "$TERM" in
 	(xterm*)
-		precmd() {
+		_set-term-title() {
 			print -Pn '\e]0;%n@%m%(4V. [%4v].)\a'
 		}
 	;;
 	(screen*)
-		precmd() {
+		_set-term-title() {
 			print -Pn '\e_%n@%m%(4V. [%4v].)\e\\'
 			print -Pn '\ek%m(%l)%(5V./%5v.)\e\\'
 		}
 	;;
 esac
+
+precmd_functions=(_set-term-title)
 
 ## Extra prompt info functions
 
