@@ -1,5 +1,6 @@
 [core]
 	pager =
+	autocrlf = false
 
 [advice]
 	statusHints = false
@@ -59,6 +60,9 @@
 
 [grep]
 	linenumber = true
+
+[init]
+	templatedir =
 
 [log]
 	date = iso8601
