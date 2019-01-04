@@ -95,7 +95,18 @@ case "$TERM" in
 	;;
 esac
 
-precmd_functions=(_set-term-title)
+## VCS Info
+_set-vcs-info() {
+	if zstyle -t ":tgy:$HOST:$PWD" vcs_info_enable; then
+		vcs_info
+		psvar[3]="$vcs_info_msg_0_"
+	else
+		unset vcs_info_msg_0_ vcs_info_msg_1_
+		psvar[3]=""
+	fi
+}
+
+precmd_functions=(_set-term-title _set-vcs-info)
 
 ## Extra prompt info functions
 
@@ -152,6 +163,7 @@ zle-line-init() {
 
 autoload -Uz edit-command-line
 autoload -Uz insert-composed-char
+autoload -Uz vcs_info
 autoload -Uz zargs
 autoload -Uz zmv
 
@@ -214,6 +226,17 @@ bindkey -M viins '^X^V' edit-command-line
 ## Insert composed characters
 
 bindkey -M viins '^K' insert-composed-char
+
+# Styles
+
+## VCS Info
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats '[%b]%c%u'
+zstyle ':vcs_info:*' actionformats '[%b|%a]%c%u'
+zstyle ':vcs_info:*' check-for-staged-changes yes
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
 
 # Aliases
 
