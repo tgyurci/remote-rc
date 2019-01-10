@@ -55,6 +55,10 @@
 [commit]
 	verbose = true
 
+[fetch]
+	prune = true
+	pruneTags = true
+
 [gc]
 	auto = 0
 
