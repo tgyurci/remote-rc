@@ -6,7 +6,7 @@
 	statusHints = false
 
 [alias]
-	br = branch
+	br = branch -vv
 	ci = commit
 	co = checkout
 	cp = cherry-pick -x
