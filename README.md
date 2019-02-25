@@ -1,3 +1,3 @@
-# remote-rc
+# rc-base
 
-Collection of rc files for remote accessible \*nix boxes.
+Basic rc files a.k.a. dotfiles for \*nix boxes.
