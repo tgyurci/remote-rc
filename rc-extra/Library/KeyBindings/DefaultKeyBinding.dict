@@ -1,0 +1,6 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.dict */
+
+{
+	"^w" = "deleteWordBackward:";
+	"^u" = "deleteToBeginningOfLine:";
+}
