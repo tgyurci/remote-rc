@@ -133,29 +133,6 @@ highlight Title cterm=bold
 augroup vimrc_filetypedetect
 	autocmd!
 
-	" BSD rc scripts
-	autocmd BufRead /etc/{rc.*,*.subr} setfiletype sh
-
-	" BSD periodic conf
-	autocmd BufRead /etc/periodic.conf setfiletype sh
-
-	" BSD periodic scripts
-	autocmd BufRead /etc/periodic/** setfiletype sh
-
-	" FreeBSD loader config
-	autocmd BufRead *.4th setfiletype forth
-
-	" Included apache configs
-	autocmd BufNewFile,BufRead /*/etc/apache*/**/*.conf setfiletype apache
-
-	" Gradle files
-	autocmd BufNewFile,BufRead *.gradle setfiletype groovy
-
-	" Local .gitconfig
-	autocmd BufNewFile,BufRead ~/.gitconfig.local setfiletype gitconfig
-
-	" Local .tmux.conf
-	autocmd BufNewFile,BufRead ~/.tmux.conf.local setfiletype tmux
 augroup END
 
 augroup vimrc_filetypeplugin
@@ -166,18 +143,6 @@ augroup vimrc_filetypeplugin
 
 	" Default C include headers
 	autocmd BufRead /user/include/** setlocal tabstop=8
-
-	" Apache mod_python directives
-	autocmd FileType apache syntax keyword apacheDeclaration PythonPath PythonHandler PythonInterpreter PythonOption
-
-	" Apache mod_dav_svn directives
-	autocmd FileType apache syntax keyword apacheDeclaration SVNPath SVNParentPath
-
-	" Default indenter for xml files
-	autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
-
-	" Default indenter for JSON files
-	autocmd FileType json setlocal equalprg=jq\ -M\ .
 augroup END
 
 augroup vimrc_securefile
