@@ -16,6 +16,7 @@ set smartcase
 "  4 displaying text
 set nowrap
 set showbreak=>
+set display=lastline,uhex
 if has('patch-7.4.710')
 	set listchars=eol:¶,tab:»\ ,space:·,extends:>,precedes:<,nbsp:¬
 else
