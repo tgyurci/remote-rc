@@ -73,6 +73,8 @@ else
 	RPROMPT="${RPROMPT}L%L"
 fi
 
+RPROMPT="${RPROMPT}%(5V./%B%5v%b.)"
+
 case "$TERM" in
 	(screen*) ;;
 	(*) RPROMPT="$RPROMPT %l" ;;
