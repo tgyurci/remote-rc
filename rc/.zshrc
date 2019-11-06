@@ -99,7 +99,7 @@ esac
 
 ## VCS Info
 _set-vcs-info() {
-	if zstyle -t ":tgy:$HOST:$PWD" vcs_info_enable; then
+	if zstyle -t ":rc-base:$HOST:$PWD" vcs_info_enable; then
 		vcs_info
 		psvar[3]="$vcs_info_msg_0_"
 	else
