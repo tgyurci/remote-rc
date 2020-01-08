@@ -111,5 +111,19 @@
 	suffix = rc
 	suffix =
 
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+
+[filter "git-crypt"]
+	smudge = git-crypt smudge
+	clean = git-crypt clean
+	required = true
+
+[diff "git-crypt"]
+	textconv = git-crypt diff
+
 [include]
 	path = ~/.gitconfig.local
