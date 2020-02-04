@@ -26,6 +26,7 @@
 	rbq = rebase --quit
 	sm = submodule
 	st = status --short --branch
+	sw = switch
 	unstage = reset HEAD --
 	wt = worktree
 
