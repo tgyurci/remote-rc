@@ -1,6 +1,7 @@
 [core]
 	pager =
 	autocrlf = false
+	quotePath = false
 
 [advice]
 	statusHints = false
