@@ -90,7 +90,7 @@ set imsearch=-1
 " 24 multi-byte characters
 
 " 25 various
-set viminfo=
+set viminfofile=NONE
 
 " 99 terminal settings
 "set t_Co=256
