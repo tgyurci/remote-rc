@@ -106,6 +106,10 @@ esac
 
 ## Local configuration
 
+if [ -f "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.shrc.local" ]; then
+	. "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.shrc.local"
+fi
+
 if [ -f "$HOME/.shrc.local" ]; then
 	. "$HOME/.shrc.local"
 fi

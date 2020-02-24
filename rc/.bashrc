@@ -46,6 +46,7 @@ case "$TERM" in
 esac
 
 # Local configuration
+src "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.bashrc.local"
 src "$HOME/.bashrc.local"
 
 unset command_not_found_handle

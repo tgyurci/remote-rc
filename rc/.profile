@@ -7,6 +7,11 @@ if [ -f "$HOME/.shrc" ]; then
 fi
 
 # Local configuration
+
+if [ -f "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.profile.local" ]; then
+	. "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.profile.local"
+fi
+
 if [ -f "$HOME/.profile.local" ]; then
 	. "$HOME/.profile.local"
 fi

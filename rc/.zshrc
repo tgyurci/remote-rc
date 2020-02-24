@@ -248,6 +248,7 @@ alias pu='pushd'
 
 # Local configuration
 
+src "${XDG_CONFIG_HOME:-"$HOME/.config"}/rc-local/.zshrc.local"
 src "$HOME/.zshrc.local"
 
 # Cleanup
