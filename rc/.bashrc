@@ -3,13 +3,15 @@
 umask 022
 
 #[[ $- != *i* ]] && return
-[ -z "$PS1" ] && return
+[[ -n "$PS1" ]] || return
 
 src() {
-	[ -f "$1" ] && source "$1"
+	if [[ -f "$1" ]]; then
+		source "$1"
+	fi
 }
 
-if [ -z "$UNAME_S" ]; then
+if [[ -z "$UNAME_S" ]]; then
 	UNAME_S=$(uname -s)
 fi
 
@@ -22,11 +24,11 @@ HISTFILESIZE=0
 HISTSIZE=2048
 PS1='\u@\h:\w\$ '
 
-if [ -z "$HOST_S" ]; then
+if [[ -z "$HOST_S" ]]; then
 	HOST_S="${HOSTNAME%%.*}"
 fi
 
-if [ -z "$TTY_S" ]; then
+if [[ -z "$TTY_S" ]]; then
 	TTY=$(tty)
 	TTY_S=${TTY#/dev/}
 	TTY_S=${TTY_S##tty}
