@@ -103,12 +103,14 @@ endif
 
 " Variables
 
-let g:netrw_dirhistmax=0
+let g:loaded_2html_plugin = 0
+let g:loaded_getscriptPlugin = 0
+let g:loaded_vimballPlugin = 0
+let g:netrw_dirhistmax = 0
 
 " Filetype detection
 
 filetype on
-"filetype plugin indent on
 
 " Syntax highlighting
 
@@ -139,10 +141,13 @@ augroup vimrc_filetypeplugin
 	autocmd!
 
 	" BSD periodic scripts
-	autocmd BufRead /etc/periodic/** setlocal tabstop=8
+	autocmd BufRead /etc/periodic/** setlocal tabstop=8 shiftwidth=8
 
 	" Default C include headers
-	autocmd BufRead /user/include/** setlocal tabstop=8
+	autocmd BufRead /user/include/** setlocal tabstop=8 shiftwidth=8
+
+	" Vim runtime scripts
+	autocmd BufRead $VIMRUNTIME/*/*.vim setlocal tabstop=8 shiftwidth=8
 augroup END
 
 augroup vimrc_securefile
