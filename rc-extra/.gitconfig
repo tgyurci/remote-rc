@@ -132,4 +132,5 @@
 	textconv = gpg -d --no-verbose --quiet
 
 [include]
+	path = ~/.config/rc-local/.gitconfig.local
 	path = ~/.gitconfig.local
