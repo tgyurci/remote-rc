@@ -1,10 +1,5 @@
 # ~tgyurci/.zshrc
 
-# Preinit
-
-## If the shell is not interactive, leave it.
-[[ -o interactive ]] || return
-
 # Options
 
 ## Changing Directories
