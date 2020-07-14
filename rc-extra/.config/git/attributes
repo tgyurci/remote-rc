@@ -1,4 +1,5 @@
 *.docx binary
+*.epub binary
 *.indd binary
 *.jar binary
 *.jpg binary
