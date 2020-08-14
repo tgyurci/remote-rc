@@ -64,6 +64,9 @@
 	prune = true
 	pruneTags = true
 
+[format]
+	signature =
+
 [gc]
 	auto = 0
 
