@@ -28,13 +28,13 @@ if [ -z "$PATH" ]; then
 	export PATH
 fi
 
-export BLOCKSIZE="K"
-export EDITOR="vim"
-export LESS="-QMiR -x4"
-export LESSHISTFILE=-
-export PAGER="less"
-export VISUAL="$EDITOR"
-export XMLLINT_INDENT="	" # tab
+BLOCKSIZE="K"; export BLOCKSIZE
+EDITOR="vim"; export EDITOR
+LESS="-QMiR -x4"; export LESS
+LESSHISTFILE="-"; export LESSHISTFILE
+PAGER="less"; export PAGER
+VISUAL="$EDITOR"; export VISUAL
+XMLLINT_INDENT="	"; export XMLLINT_INDENT # tab
 
 ## Aliases
 
@@ -75,7 +75,7 @@ case "$UNAME_S" in
 		alias top='top -Sjaz -s 1 -o cpu'
 	;;
 	Linux)
-		export SYSTEMD_PAGER=""
+		SYSTEMD_PAGER=""; export SYSTEMD_PAGER
 		alias bc='bc -lq'
 		alias free='free -lt'
 		alias ls='ls -Fa --color=auto'

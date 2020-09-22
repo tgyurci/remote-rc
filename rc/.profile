@@ -2,8 +2,8 @@
 
 # Set ENV for interactive shells
 if [ -f "$HOME/.shrc" ]; then
-	export UNAME_S="$(uname -s)"
-	export ENV="$HOME/.shrc"
+	UNAME_S="$(uname -s)"; export UNAME_S
+	ENV="$HOME/.shrc"; export ENV
 fi
 
 # Local configuration
