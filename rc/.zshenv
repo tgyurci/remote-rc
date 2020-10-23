@@ -9,3 +9,7 @@ fi
 if [[ -f "$HOME/.zshenv.local" ]]; then
 	. "$HOME/.zshenv.local"
 fi
+
+if [[ -n "$ZDOTDIR" && "$ZDOTDIR/.zshenv.local" ]]; then
+	. "$ZDOTDIR/.zshenv.local"
+fi
