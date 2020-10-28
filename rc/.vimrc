@@ -62,6 +62,7 @@ set shiftwidth=4
 " 16 diff mode
 
 " 17 mapping
+set ttimeoutlen=50
 
 " 18 reading and writing files
 set nomodeline
