@@ -77,6 +77,14 @@ esac
 
 # Functions
 
+## Autoload functions
+
+autoload -Uz edit-command-line
+autoload -Uz insert-composed-char
+autoload -Uz vcs_info
+autoload -Uz zargs
+autoload -Uz zmv
+
 ## Terminal title
 case "$TERM" in
 	(xterm*)
@@ -155,14 +163,6 @@ zle-line-init() {
 	_set-histno-prompt
 	zle reset-prompt
 }
-
-## Autoload functions
-
-autoload -Uz edit-command-line
-autoload -Uz insert-composed-char
-autoload -Uz vcs_info
-autoload -Uz zargs
-autoload -Uz zmv
 
 # Zle widgets
 
