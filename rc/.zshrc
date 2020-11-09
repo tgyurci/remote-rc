@@ -79,6 +79,7 @@ esac
 
 ## Autoload functions
 
+autoload -Uz add-zsh-hook
 autoload -Uz edit-command-line
 autoload -Uz insert-composed-char
 autoload -Uz vcs_info
@@ -100,6 +101,8 @@ case "$TERM" in
 	;;
 esac
 
+add-zsh-hook precmd _set-term-title
+
 ## VCS Info
 _set-vcs-info() {
 	if zstyle -t ":rc-base:$HOST:$PWD" vcs_info_enable; then
@@ -111,7 +114,7 @@ _set-vcs-info() {
 	fi
 }
 
-precmd_functions=(_set-term-title _set-vcs-info)
+add-zsh-hook precmd _set-vcs-info
 
 ## Extra prompt info functions
 
