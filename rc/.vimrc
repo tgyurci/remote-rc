@@ -171,7 +171,10 @@ augroup vimrc_cmdwin
 	autocmd CmdwinEnter * startinsert
 augroup END
 
-let s:local_vimrc = $HOME."/.vimrc.local"
-if filereadable(s:local_vimrc)
-	source $HOME/.vimrc.local
+if filereadable(expand('~/.vim/vimrc.local'))
+	source ~/.vim/vimrc.local
+endif
+
+if filereadable(expand('~/.vimrc.local'))
+	source ~/.vimrc.local
 endif
