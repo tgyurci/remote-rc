@@ -1,0 +1,6 @@
+#line-edit
+^W word-backspace
+
+#env
+LESS = -QMiR -x4
+LESSHISTFILE = -
