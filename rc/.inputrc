@@ -7,3 +7,6 @@ set input-meta on
 set output-meta on
 set show-all-if-ambiguous on
 set visible-stats on
+
+$include ~/.config/rc-local/.inputrc.local
+$include ~/.inputrc.local
