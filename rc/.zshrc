@@ -149,22 +149,34 @@ _set-histno-prompt() {
 	psvar[1]="$hist"
 }
 
+_redraw-prompt() {
+	local status_line reply
+
+	zle reset-prompt
+
+	zstyle -s ":rc-base:$HOST:$PWD" status-line status_line
+
+	if [[ -n "$status_line" && $KEYS_QUEUED_COUNT == 0 ]]; then
+		zle -M -- "$status_line"
+	fi
+}
+
 ## Zle widgets
 
 zle-history-line-set() {
 	_set-histno-prompt
-	zle reset-prompt
+	_redraw-prompt
 }
 
 zle-keymap-select() {
 	_set-vi-mode-prompt
-	zle reset-prompt
+	_redraw-prompt
 }
 
 zle-line-init() {
 	_set-vi-mode-prompt
 	_set-histno-prompt
-	zle reset-prompt
+	_redraw-prompt
 }
 
 # Zle widgets
