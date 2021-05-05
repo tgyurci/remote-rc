@@ -74,6 +74,7 @@
 	linenumber = true
 
 [init]
+	defaultBranch = master
 	templatedir =
 
 [log]
